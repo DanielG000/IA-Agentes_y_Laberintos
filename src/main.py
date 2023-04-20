@@ -1,4 +1,7 @@
 from GUI.Ventana import Ventana
+#from Structure-Hilos import Hilos
+#from Structure.
+#from Structure.Arbol import Hilos
 
 class main:
 
@@ -6,7 +9,7 @@ class main:
     __ventana = None
 
     #Manejador de hilos
-    __hilos = None
+    __managerHilos = None
 
     #Objetos funcionales
     __pinocho = None

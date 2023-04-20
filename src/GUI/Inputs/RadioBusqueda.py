@@ -1,9 +1,10 @@
 from customtkinter import CTkFrame,CTkLabel,CTkRadioButton
 from tkinter import IntVar
 
-class OpcionBusqueda(CTkFrame):
+class RadioBusqueda(CTkFrame):
 
     variable = None
+    __setter = None
 
     #texto
     __etiqueta = None
@@ -13,10 +14,13 @@ class OpcionBusqueda(CTkFrame):
     __costo = None
     __profundidadI = None
 
-    def __init__(self, master=None):
+    def __init__(self, master, metodo):
         if (master is None):
             raise Exception("La referencia raiz es None")
+        elif (metodo is None):
+            raise Exception("No se le paso el  metodo para devolver el valor")
         super().__init__(master)
+        self.__setter = metodo
         self.pack()
         self.place(relx=0.01, rely=0.05, relwidth=0.38,relheight=0.60)
         self.create_widgets()
@@ -54,7 +58,7 @@ class OpcionBusqueda(CTkFrame):
             case 3:
                 opcion="Profundidad iterativa"
 
-        self.master.setBusqueda(opcion)
+        self.__setter(opcion)
         pass
 
     pass

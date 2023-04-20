@@ -1,13 +1,14 @@
 import customtkinter
 from customtkinter import CTk
-from GUI.MenuFrame import Menu
-from GUI.LateralFrame import Lateral
+from GUI.Frames.Menu import Menu
+from GUI.Frames.Lateral import Lateral
+from GUI.Frames.Central import Central
 
 class Ventana(customtkinter.CTk):
 
     __manager = None
 
-    __principal = None
+    __central = None
     __lateral = None
     __menu = None
 
@@ -23,6 +24,7 @@ class Ventana(customtkinter.CTk):
         #loc componentes se crean y agregan a la interfas de forma automatica
         self.__menu = Menu(self)
         self.__lateral = Lateral(self, width=150, height=1000)
+        self.__central = Central(self)
         pass
 
     pass

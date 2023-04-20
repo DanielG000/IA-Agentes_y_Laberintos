@@ -1,20 +1,23 @@
 from customtkinter import CTkFrame, CTkButton
-from GUI.OpcionBusqueda import OpcionBusqueda
-from GUI.OpcionDevolver import OpcionDevolver
+from GUI.Inputs.RadioBusqueda import RadioBusqueda
+from GUI.Inputs.RadioDevolver import RadioDevolver
+from GUI.Inputs.Limites import Limites
 
 class Menu(CTkFrame):
 
     __opcionBusqueda = None     #String
     __opcionDevolverse = None   #Boleano
+    __limiteI = None            #Int
+    __limiteP = None            #Int
 
     #Opciones especiales para 
     __limiteDeIteraciones = None
     __limiteDeProfundidad = None
 
     #Frames
-    __panelAlgoritmo = None
-    __panelDevolverse = None
-    __configBusqueda = None
+    __panelBusqueda = None
+    __panelDevolver = None
+    __limitesBusqueda = None
 
     #Botones
     __config = None
@@ -39,8 +42,9 @@ class Menu(CTkFrame):
         self.__iniciar.configure(state="disabled")
 
         #los frames solo se crean por lo que se auto posicionan
-        self.__panelAlgotimo = OpcionBusqueda(self)
-        self.__panelDevolverse = OpcionDevolver(self)
+        self.__panelBusqueda = RadioBusqueda(self, self.setBusqueda)
+        self.__panelDevolver = RadioDevolver(self, self.setDevolver)
+        self.__limitesBusqueda = Limites(self, self.setLimiteI, self.setLimiteP)
         
         #Mostrar en el frame
         self.__config.pack()
@@ -63,11 +67,23 @@ class Menu(CTkFrame):
         pass
 
     # Recibe el boleano y lo guarda en la clase para usarlo luego
-    def setDevolverse(self,opcion):
+    def setDevolver(self,opcion):
         if (type(opcion) != type(True)):
             raise Exception("Tipo de parametro erroneo, debes usar boolean")
 
         self.opcionDevolverse = opcion
+        pass
+
+    def setLimiteI(self,numero):
+        if (type(numero) != type(1) and type(numero) != type(1.0)):
+            raise Exception("No es un numero entero o flotante")
+        self.__limiteI = numero
+        pass
+
+    def setLimiteP(self,numero):
+        if (type(numero) != type(1) and type(numero) != type(1.0)):
+            raise Exception("No es un numero entero o flotante")
+        self.__limiteP = numero
         pass
 
     pass

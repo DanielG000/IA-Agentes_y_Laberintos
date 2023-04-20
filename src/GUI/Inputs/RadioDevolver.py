@@ -1,8 +1,9 @@
 from customtkinter import CTkFrame,CTkLabel,CTkRadioButton
 from tkinter import IntVar
 
-class OpcionDevolver(CTkFrame):
+class RadioDevolver(CTkFrame):
 
+    __setter = None
     variable = None
 
     #texto
@@ -13,10 +14,13 @@ class OpcionDevolver(CTkFrame):
     __no = None
 
 
-    def __init__(self, master=None):
+    def __init__(self, master, metodo):
         if (master is None):
             raise Exception("La referencia raiz es None")
+        elif (metodo is None):
+            raise Exception("No recibio el metodo para devolver el valor")
         super().__init__(master)
+        self.__setter = metodo
         self.pack()
         self.place(relx=0.4, rely=0.05, relwidth=0.2,relheight=0.60)
         self.create_widgets()
