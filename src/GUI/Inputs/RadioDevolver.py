@@ -53,7 +53,7 @@ class RadioDevolver(CTkFrame):
             case 2:
                 opcion = False
 
-        self.master.setDevolverse(opcion)
+        self.__setter(opcion)
         pass
 
     pass

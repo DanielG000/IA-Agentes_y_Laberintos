@@ -29,6 +29,8 @@ class Menu(CTkFrame):
         if(master is None):
             raise Exception("No hay una ventana raiz")
         super().__init__(master)
+        self.__limiteI = 0
+        self.__limiteP = 0
         self.pack(padx="5px",pady="5px",side="bottom",fill="both")
         self.create_widgets()
         pass
