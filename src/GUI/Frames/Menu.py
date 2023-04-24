@@ -1,4 +1,4 @@
-from customtkinter import CTkFrame, CTkButton
+from customtkinter import CTkFrame, CTkButton, filedialog
 from GUI.Inputs.RadioBusqueda import RadioBusqueda
 from GUI.Inputs.RadioDevolver import RadioDevolver
 from GUI.Inputs.Limites import Limites
@@ -39,7 +39,7 @@ class Menu(CTkFrame):
     def create_widgets(self):
         #creación de cada componente
         self.__config = CTkButton(self, text="")
-        self.__subir = CTkButton(self, text="Subir mapa")
+        self.__subir = CTkButton(self, text="Subir mapa", command=self.subirMapa)
         self.__iniciar = CTkButton(self, text="") 
         self.__iniciar.configure(state="disabled")
 
@@ -60,32 +60,70 @@ class Menu(CTkFrame):
 
         pass
 
-    # Recibe un str (string) para luego elejir la busqueda.
+    #
+
+    # recibe la opcion en String (str) de la busqueda
     def setBusqueda(self,opcion):
         if(type(opcion) != type("String")):
             raise Exception("Tipo de parametro erroneo, recibe un str (String)")
         else:
-            self.opcionBusqueda = opcion
+            self.__opcionBusqueda = opcion
+            self.inicioHabilitable()
         pass
 
     # Recibe el boleano y lo guarda en la clase para usarlo luego
     def setDevolver(self,opcion):
         if (type(opcion) != type(True)):
             raise Exception("Tipo de parametro erroneo, debes usar boolean")
-
-        self.opcionDevolverse = opcion
+        else:
+            self.__opcionDevolverse = opcion
+            self.inicioHabilitable()
         pass
 
     def setLimiteI(self,numero):
-        if (type(numero) != type(1) and type(numero) != type(1.0)):
+        if (type(numero) != type(1)):
             raise Exception("No es un numero entero o flotante")
-        self.__limiteI = numero
+        else:
+            self.__limiteI = numero
+            self.inicioHabilitable()
         pass
 
     def setLimiteP(self,numero):
         if (type(numero) != type(1) and type(numero) != type(1.0)):
             raise Exception("No es un numero entero o flotante")
-        self.__limiteP = numero
+        else:
+            self.__limiteP = numero
+            self.inicioHabilitable()
+        pass
+
+
+    #mira si tiene lo necesario para habilitar el boton para iniciar el agente
+    def inicioHabilitable(self):
+        habilitar = True
+        if(self.__opcionBusqueda is None):
+            habilitar = False
+        elif(self.__opcionDevolverse is None):
+            habilitar = False
+        elif(self.__limiteI is None or self.__limiteI <= 0) and (self.__opcionBusqueda == "Profundidad iterativa"):
+            habilitar = False
+
+        if habilitar:
+            self.__iniciar.configure(state="normal")
+        else:
+            self.__iniciar.configure(state="disabled")
+
+        pass
+
+
+    def config(self):
+        pass
+
+    def subirMapa(self):
+        ruta = filedialog.askopenfilename(title='Mapa Laberinto',initialdir='./Mapas')
+        self.master.rutaMapa(ruta)
+        pass
+
+    def iniciar(self):
         pass
 
     pass

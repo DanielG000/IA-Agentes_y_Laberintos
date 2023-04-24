@@ -6,4 +6,8 @@ class MapaG(CTkFrame):
         super().__init__(master)
         self.pack(padx="5px",pady="5px",side="top",expand=True,fill="both")
         pass
+    
+    def create_widgets(self):
+        pass
+
     pass

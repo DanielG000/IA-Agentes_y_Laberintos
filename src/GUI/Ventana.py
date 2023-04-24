@@ -27,4 +27,8 @@ class Ventana(customtkinter.CTk):
         self.__central = Central(self)
         pass
 
+    def rutaMapa(self, ruta):
+        self.__manager.mapaNuevo(ruta)
+        pass
+
     pass
