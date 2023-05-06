@@ -1,4 +1,4 @@
-from customtkinter import CTkScrollableFrame,CTkButton
+from customtkinter import CTkScrollableFrame,CTkButton, CTkImage
 from PIL import Image, ImageTk
 import time
 
@@ -32,12 +32,12 @@ class MapaG(CTkScrollableFrame):
 
 
     def load_images(self):
-        self.image_dict = {0 : 'GUI/Frames/Imagenes/Vacio.jpg',
-                           5 : 'GUI/Frames/Imagenes/Bloque.jpg',
-                           1 : 'GUI/Frames/Imagenes/Pinocho.jpg',
-                           4 : 'GUI/Frames/Imagenes/Zorro.jpg',
-                           2 : 'GUI/Frames/Imagenes/Geppetto.jpg',
-                           3 : 'GUI/Frames/Imagenes/Cigarrillo.jpg'
+        self.image_dict = {0 : 'src/GUI/Frames/Imagenes/Vacio.jpg',
+                           5 : 'src/GUI/Frames/Imagenes/Bloque.jpg',
+                           1 : 'src/GUI/Frames/Imagenes/Pinocho.jpg',
+                           4 : 'src/GUI/Frames/Imagenes/Zorro.jpg',
+                           2 : 'src/GUI/Frames/Imagenes/Geppetto.jpg',
+                           3 : 'src/GUI/Frames/Imagenes/Cigarrillo.jpg'
                 }
         
         self.images = []
@@ -50,7 +50,7 @@ class MapaG(CTkScrollableFrame):
                         (self.IMAGE_WIDTH, self.IMAGE_HEIGHT), Image.LANCZOS
                         )
                 except:
-                    image = CTkImage.new('RGB',
+                    image = Image.new('RGB',
                                       (self.IMAGE_WIDTH, self.IMAGE_HEIGHT),
                                       color=(255,255,255)
                                       )
