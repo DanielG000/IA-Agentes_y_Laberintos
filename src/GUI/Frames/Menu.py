@@ -40,13 +40,13 @@ class Menu(CTkFrame):
         #creación de cada componente
         self.__config = CTkButton(self, text="")
         self.__subir = CTkButton(self, text="Subir mapa", command=self.subirMapa)
-        self.__iniciar = CTkButton(self, text="") 
+        self.__iniciar = CTkButton(self, text="", command=self.iniciar) 
         self.__iniciar.configure(state="disabled")
 
         #los frames solo se crean por lo que se auto posicionan
         self.__panelBusqueda = RadioBusqueda(self, self.setBusqueda)
-        self.__panelDevolver = RadioDevolver(self, self.setDevolver)
-        self.__limitesBusqueda = Limites(self, self.setLimiteI, self.setLimiteP)
+        #self.__panelDevolver = RadioDevolver(self, self.setDevolver)
+        #self.__limitesBusqueda = Limites(self, self.setLimiteI, self.setLimiteP)
         
         #Mostrar en el frame
         self.__config.pack()
@@ -102,10 +102,10 @@ class Menu(CTkFrame):
         habilitar = True
         if(self.__opcionBusqueda is None):
             habilitar = False
-        elif(self.__opcionDevolverse is None):
-            habilitar = False
-        elif(self.__limiteI is None or self.__limiteI <= 0) and (self.__opcionBusqueda == "Profundidad iterativa"):
-            habilitar = False
+        #elif(self.__opcionDevolverse is None):
+        #   habilitar = False
+        #elif(self.__limiteI is None or self.__limiteI <= 0) and (self.__opcionBusqueda == "Profundidad iterativa"):
+        #    habilitar = False
 
         if habilitar:
             self.__iniciar.configure(state="normal")
@@ -124,6 +124,7 @@ class Menu(CTkFrame):
         pass
 
     def iniciar(self):
+        self.master.solucionar(self.__opcionBusqueda)
         pass
 
     pass

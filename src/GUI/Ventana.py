@@ -31,4 +31,19 @@ class Ventana(customtkinter.CTk):
         self.__manager.mapaNuevo(ruta)
         pass
 
+    def setMapa(self, matriz):
+        self.__central.setMapa(matriz)
+        pass
+
+    def solucionar(self, opcion):
+        self.__manager.solucionar(opcion)
+        pass
+
+    def setResultado(self, resultado):
+        if type(resultado) is str:
+            self.__lateral.setResultado(resultado)
+        elif type(resultado) is []:
+            self.__lateral.setResultado(resultado)
+            self.__central.setResultado(resultado)
+
     pass

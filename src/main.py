@@ -1,7 +1,9 @@
 from GUI.Ventana import Ventana
 from Structure.Hilos import Hilos
 from Structure.Mapa import Mapa
-#from Structure. import 
+from Algorith.amplitud import *
+from Algorith.costo import *
+from Algorith.profundidad import *
 
 class main:
 
@@ -12,7 +14,6 @@ class main:
     __managerHilos = None
 
     #Objetos funcionales
-    __pinocho = None
     __arbol = None
     __mapa = None
 
@@ -25,6 +26,27 @@ class main:
         self.startGUI()
         pass
 
+    def solucionar(self, opcion):
+        camino = None
+        matriz = self.__mapa.getMapa()
+        inicio = self.__mapa.getInicio()
+        if opcion == "Amplitud":
+            camino = busquedaAmplitud(matriz,inicio[0],inicio[1])
+        elif opcion == "Costo":
+            camino = busquedaCosto(matriz, inicio[0], inicio[1])
+        elif opcion == "Profundidad iterativa":
+            camino = profundidadi(matriz, inicio[0], inicio[1])
+
+        if camino is False or camino is None:
+            self.__ventana.setResultado("No se encontro solución")
+        else:
+            print(camino[0])
+            print(camino[1])
+            print(camino[2])
+
+            self.__ventana.setResultado(camino[0])
+
+        pass
 
     def ejecutar(self, funcion, **parametros):
         self.__managerHilos.usarHilo(funcion, **parametros)
@@ -35,7 +57,9 @@ class main:
         pass
     
     def mapaNuevo(self,ruta):
-        self.ejecutar(self.__mapa.leerMapa(ruta))
+        self.__mapa.leerMapa(ruta)
+        matriz = self.__mapa.getMapa()
+        self.__ventana.setMapa(matriz)
         pass
 
     pass

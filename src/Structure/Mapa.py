@@ -1,5 +1,6 @@
 class Mapa:
 
+    __inicio = None
     __matriz = None
 
     def leerMapa(self, ruta):
@@ -18,10 +19,12 @@ class Mapa:
         pass
 
     def error(self, texto):
-            raise Exception("Error con el Formato, {texto}")
+            raise Exception("Error con el Formato, {}".format(texto))
 
     def comprobarFormato(self, lineas):
         size = lineas[0].split()
+        size[0] = int(size[0])
+        size[1] = int(size[1])
         matriz = []
 
         if len(size) != 2:
@@ -31,12 +34,14 @@ class Mapa:
         else:
             for nf in range(1, (size[0]+1) ):
                 fila = lineas[nf]
-                columnas = file.split()
+                columnas = fila.split()
                 if len(columnas) != size[1]:
                     self.error("cantidad de columnas.")
                 else:
+                    cols = []
                     for colum in columnas:
-                        matriz.append(int(colum))
+                        cols.append(int(colum))
+                    matriz.append(cols)
 
         return matriz
 
@@ -47,6 +52,7 @@ class Mapa:
             for columna in fila:
                 if (columna == 1):
                     inicio = True
+                    self.__inicio = [fila,columna]
                     break
             if inicio:
                 break
@@ -66,5 +72,8 @@ class Mapa:
 
     def getMapa(self):
         return self.__matriz
+
+    def getInicio(self):
+        return self.__inicio
 
     pass

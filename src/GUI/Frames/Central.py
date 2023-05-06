@@ -15,11 +15,19 @@ class Central(CTkTabview):
 
     def create_widgets(self):
         self.add("Mapa")
-        self.add("Arbol")
+        #self.add("Arbol")
         
         self.__mapaG = MapaG(self.tab("Mapa"))
-        self.__arbolG= ArbolG(self.tab("Arbol"))
+        #self.__arbolG= ArbolG(self.tab("Arbol"))
 
+        pass
+
+    def setResultado(self, resultado):
+        self.__mapaG.animar(resultado)
+        pass
+
+    def setMapa(self,matriz):
+        self.__mapaG.cargarMapa(matriz)
         pass
 
     pass
