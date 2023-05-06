@@ -21,12 +21,13 @@ class MapaG(CTkScrollableFrame):
         self.create_widgets()
         pass
 
-    def animar(self,camino):
+    def animar(self,camino,x,y):
+        print(camino)
         for posicion in camino:
             row = posicion[0]
             col = posicion[1]
-            button = CTkButton(self, text="",image=self.images[row][col], width=self.winfo_width()*(1/len(self.matriz[0])), height=self.winfo_height(1/len(self.matriz)))
-            button.grid(row=row, column=col) 
+
+            self.mbotones[row][col].configure(image=self.images[x][y])
         pass
 
 
@@ -49,7 +50,7 @@ class MapaG(CTkScrollableFrame):
                         (self.IMAGE_WIDTH, self.IMAGE_HEIGHT), Image.LANCZOS
                         )
                 except:
-                    image = Image.new('RGB',
+                    image = CTkImage.new('RGB',
                                       (self.IMAGE_WIDTH, self.IMAGE_HEIGHT),
                                       color=(255,255,255)
                                       )
@@ -60,10 +61,13 @@ class MapaG(CTkScrollableFrame):
 
     def create_widgets(self):
         # Crea un boton para cada celda de la matriz
+        self.mbotones = []
         for row in range(len(self.matriz)):
+            self.mbotones.append([])
             for col in range(len(self.matriz[0])):
-                button = CTkButton(self, text="", image=self.images[row][col], width=self.winfo_width()*(1/len(self.matriz[0])), height=self.winfo_height()*(1/(len(self.matriz) * 2)))
-                button.grid(row=row, column=col) 
+                self.mbotones[row].append(None)
+                self.mbotones[row][col] = CTkButton(self, text="", image=self.images[row][col], width=self.winfo_width()*(1/len(self.matriz[0])), height=self.winfo_height()*(1/(len(self.matriz) * 2)))
+                self.mbotones[row][col].grid(row=row, column=col) 
         pass
 
     pass

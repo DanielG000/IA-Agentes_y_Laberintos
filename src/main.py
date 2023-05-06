@@ -38,13 +38,16 @@ class main:
             camino = profundidadi(matriz, inicio[0], inicio[1])
 
         if camino is False or camino is None:
-            self.__ventana.setResultado("No se encontro solución")
-        else:
+            self.__ventana.setResultado("No se encontro solución",inicio[0],inicio[1])
+        elif type(camino[0]) == type([]):
             print(camino[0])
             print(camino[1])
             print(camino[2])
 
-            self.__ventana.setResultado(camino[0])
+            self.__ventana.setResultado(camino[0],inicio[0],inicio[1])
+        else:
+            self.__ventana.setResultado(camino,inicio[0],inicio[1])
+
 
         pass
 

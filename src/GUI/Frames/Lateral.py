@@ -13,11 +13,11 @@ class Lateral(CTkScrollableFrame):
     def create_widgets(self):
         pass
 
-    def setResultado(self, resultado):
-        if type(resultado) is str:
+    def setResultado(self, resultado,x,y):
+        if type(resultado) is type(""):
             self.label = CTkLabel(self, text=resultado)
             self.label.pack()
-        elif type(resultado) is [1,2]:
+        elif type(resultado) == type([1,2]):
             texto = ""
             for a in resultado:
                 texto += str(a)+"\n"

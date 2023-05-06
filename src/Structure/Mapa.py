@@ -48,11 +48,15 @@ class Mapa:
 
     def comprobarInicio(self):
         inicio = False
+        x = -1
         for fila in self.__matriz:
+            x += 1
+            y = -1
             for columna in fila:
+                y += 1
                 if (columna == 1):
                     inicio = True
-                    self.__inicio = [fila,columna]
+                    self.__inicio = [x,y]
                     break
             if inicio:
                 break

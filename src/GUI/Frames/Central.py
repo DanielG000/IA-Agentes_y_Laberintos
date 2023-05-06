@@ -22,8 +22,8 @@ class Central(CTkTabview):
 
         pass
 
-    def setResultado(self, resultado):
-        self.__mapaG.animar(resultado)
+    def setResultado(self, resultado,x,y):
+        self.__mapaG.animar(resultado,x,y)
         pass
 
     def setMapa(self,matriz):

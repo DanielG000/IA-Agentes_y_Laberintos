@@ -39,11 +39,11 @@ class Ventana(customtkinter.CTk):
         self.__manager.solucionar(opcion)
         pass
 
-    def setResultado(self, resultado):
-        if type(resultado) is str:
-            self.__lateral.setResultado(resultado)
-        elif type(resultado) is []:
-            self.__lateral.setResultado(resultado)
-            self.__central.setResultado(resultado)
+    def setResultado(self, resultado,x,y):
+        if type(resultado) is type(""):
+            self.__lateral.setResultado(resultado,x,y)
+        elif type(resultado) == type([]):
+            self.__lateral.setResultado(resultado,x,y)
+            self.__central.setResultado(resultado,x,y)
 
     pass
