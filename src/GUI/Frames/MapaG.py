@@ -1,5 +1,6 @@
 from customtkinter import CTkScrollableFrame,CTkButton
 from PIL import Image, ImageTk
+import time
 
 class MapaG(CTkScrollableFrame):
     
@@ -22,7 +23,6 @@ class MapaG(CTkScrollableFrame):
         pass
 
     def animar(self,camino,x,y):
-        print(camino)
         for posicion in camino:
             row = posicion[0]
             col = posicion[1]
