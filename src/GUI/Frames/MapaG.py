@@ -50,7 +50,7 @@ class MapaG(CTkScrollableFrame):
                         (self.IMAGE_WIDTH, self.IMAGE_HEIGHT), Image.LANCZOS
                         )
                 except:
-                    image = CTkImage.new('RGB',
+                    image = Image.new('RGB',
                                       (self.IMAGE_WIDTH, self.IMAGE_HEIGHT),
                                       color=(255,255,255)
                                       )
