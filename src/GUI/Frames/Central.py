@@ -4,12 +4,16 @@ from GUI.Frames.ArbolG import ArbolG
 
 class Central(CTkTabview):
 
+    __manager = None
+
     __mapaG = None
     __arbolG = None
 
-    def __init__(self, master):
+    def __init__(self, master, manager):
         super().__init__(master)
-        self.pack(padx="5px", pady="5px", side="left",expand=True,fill="both")
+        self.__manager = manager
+        self.pack(padx="1px", pady="1px", side="left",expand=True,fill="both")
+        self.place(relx=0.01, rely=0, relwidth=0.89, relheight=0.75)
         self.create_widgets()
         pass
 
@@ -17,7 +21,7 @@ class Central(CTkTabview):
         self.add("Mapa")
         #self.add("Arbol")
         
-        self.__mapaG = MapaG(self.tab("Mapa"))
+        self.__mapaG = MapaG(self.tab("Mapa"), manager=self.__manager)
         #self.__arbolG= ArbolG(self.tab("Arbol"))
 
         pass

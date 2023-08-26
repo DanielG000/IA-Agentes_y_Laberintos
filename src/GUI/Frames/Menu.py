@@ -28,10 +28,11 @@ class Menu(CTkFrame):
     def __init__(self, master=None):
         if(master is None):
             raise Exception("No hay una ventana raiz")
-        super().__init__(master)
+        super().__init__(master, fg_color=master.cget("fg_color"))
         self.__limiteI = 0
         self.__limiteP = 0
-        self.pack(padx="5px",pady="5px",side="bottom",fill="both")
+        self.pack(padx="1px",pady="1px",side="bottom",fill="both")
+        self.place(relx=0, rely=0.75 , relwidth=1 ,relheight=0.25)
         self.create_widgets()
         pass
 

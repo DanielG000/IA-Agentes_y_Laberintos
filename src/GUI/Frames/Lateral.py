@@ -2,11 +2,15 @@ from customtkinter import CTkScrollableFrame, CTkLabel
 
 class Lateral(CTkScrollableFrame):
 
-    def __init__(self,master, **kwargs):
+    __manager = None
+
+    def __init__(self,master, manager, **kwargs):
         if master is None:
             raise Exception("No hay una ventana raiz")
-        super().__init__(master, **kwargs)
-        self.pack(padx="5px", pady="5px", side="right", fill="both")
+        super().__init__(master, fg_color=master.cget("fg_color"), **kwargs)
+        self.__manager = manager
+        self.pack(padx="1px", pady="1px", side="right", fill="both")
+        self.place(relx=0.9,rely=0,relwidth=0.1, relheight=0.75)
         self.create_widgets()
         pass
 

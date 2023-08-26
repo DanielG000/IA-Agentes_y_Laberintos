@@ -23,8 +23,12 @@ class Ventana(customtkinter.CTk):
     def create_widgets(self):
         #loc componentes se crean y agregan a la interfas de forma automatica
         self.__menu = Menu(self)
-        self.__lateral = Lateral(self, width=150, height=1000)
-        self.__central = Central(self)
+        self.__lateral = Lateral(self, manager=self.__manager)
+        self.__central = Central(self, manager=self.__manager)
+        pass
+
+    def usarHilo(self, funcion, **parametros):
+        self.__manager.ejecutar(funcion, **parametros)
         pass
 
     def rutaMapa(self, ruta):
