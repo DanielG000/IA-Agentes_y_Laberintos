@@ -7,12 +7,12 @@ Proyecto en python de aplicación de agentes en inteligencia artificial.
 
 Los mapas deben estar en un archivo de texto. La primer linea debe contener las dimenciones del mapa. Las separaciones por medio de espacios.
 
-> 5 5
-> 0 3 0 3 0
-> 0 5 0 0 0
-> 1 0 5 5 2
-> 0 0 0 4 0
-> 0 0 0 0 0
+> + 5 5
+> + 0 3 0 3 0
+> + 0 5 0 0 0
+> + 1 0 5 5 2
+> + 0 0 0 4 0
+> + 0 0 0 0 0
 
 ### Elementos del laberinto
 
