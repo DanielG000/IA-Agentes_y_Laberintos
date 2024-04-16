@@ -39,7 +39,7 @@ class Menu(CTkFrame):
 
     def create_widgets(self):
         #creación de cada componente
-        self.__config = CTkButton(self, text="")
+        #self.__config = CTkButton(self, text="")
         self.__subir = CTkButton(self, text="Subir mapa", command=self.subirMapa)
         self.__iniciar = CTkButton(self, text="", command=self.iniciar) 
         self.__iniciar.configure(state="disabled")
@@ -50,12 +50,12 @@ class Menu(CTkFrame):
         #self.__limitesBusqueda = Limites(self, self.setLimiteI, self.setLimiteP)
         
         #Mostrar en el frame
-        self.__config.pack()
+        #self.__config.pack()
         self.__subir.pack()
         self.__iniciar.pack()
 
         #Posicion de los componentes
-        self.__config.place(relx=0.01, rely=0.75, relwidth=0.09, relheight=0.20)
+        #self.__config.place(relx=0.01, rely=0.75, relwidth=0.09, relheight=0.20)
         self.__subir.place(relx=0.11, rely=0.75, relwidth=0.20, relheight=0.20)
         self.__iniciar.place(relx=0.90, rely=0.75, relwidth=0.09, relheight=0.20)
 
